@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { fb } from "./lib/firebase";
+import { app } from "./lib/firebase";
 
 function App() {
   return (
