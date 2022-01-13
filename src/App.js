@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { db } from "./lib/firebase";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import { collection, getDocs } from "firebase/firestore/lite";
 
 function App() {
   useEffect(() => {
