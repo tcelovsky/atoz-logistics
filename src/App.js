@@ -1,13 +1,29 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { app } from "./lib/firebase";
+import { db } from "./lib/firebase";
+import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 
 function App() {
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      getInventory(db);
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  async function getInventory(db) {
+    const inventory = collection(db, "Inventory");
+    const items = await getDocs(inventory);
+    const itemsList = items.docs.map((doc) => doc.data());
+    return itemsList;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        Edit <code>src/App.js</code> and save to reload.
-      </header>
+      <h1>Inventory</h1>
     </div>
   );
 }
